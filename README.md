@@ -1,2 +1,5 @@
-# Stable-marriage-problem
-Solve the Stable marriage problem using the Gale/Shapley algorithm.
+# Stable Marriage Excersize
+
+  Based on:
+    https://rosettacode.org/wiki/Stable_marriage_problem
+

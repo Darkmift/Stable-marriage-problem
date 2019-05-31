@@ -1,0 +1,39 @@
+#wrapper {
+  max-width: 60vw;
+}
+
+.alert {
+  max-height: 2.8vw;
+}
+
+.row {
+  margin: 15px 0;
+}
+
+.form-inline label {
+  margin-bottom: 0;
+  margin: 0 10px;
+}
+
+.form-group {
+  margin: 0 5px;
+}
+
+select {
+  margin-bottom: 5px;
+}
+
+#pickAmountBtn {
+  margin: 0 10px;
+}
+
+.alert,
+#submitGroupsContainer,
+#rankingGroup1,
+#rankingGroup2 {
+  display: none;
+}
+
+#submitGroupsBtn {
+  margin: 5px;
+}

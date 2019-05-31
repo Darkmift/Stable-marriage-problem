@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Picker</title>
+    <link rel="stylesheet" href="Lib/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container,
+        .row.justify-content-center.align-items-center {
+            height: 100%;
+            min-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container h-100" id="wrapper">
+        <div class="row  h-100 justify-content-center align-items-center">
+            <div class="row jumbotron">
+                <section>
+                    <div style="height: 3vw;">
+                        <div class="alert alert-danger" id="errDiv"></div>
+                    </div>
+                    <div class="container">
+                        <!-- instructions row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 id="subject">Select amount</h4>
+                                <p id="instructions">Both group must have similar amount items to work:</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <!-- amount form -->
+                        <div class="row" id="amountFormContainer">
+                            <div class="col-sm-12">
+                                <form class="form-inline">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="pickAmountInput">Amount:</label>
+                                            <input type="number" class="form-control" id="pickAmountInput">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div>
+                                            <button type="submit" id="pickAmountBtn"
+                                                class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- names in groups form -->
+                        <div class="row" id="submitGroupsContainer">
+                            <div class="col-sm-12">
+                                <form class="row col-sm-12">
+                                    <div class="row col-sm-12" id="group1">
+                                        <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
+                                            <h5>Group 1:</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12" id="group2">
+                                        <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
+                                            <h5>Group 2:</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12">
+                                        <button type="submit" id="submitGroupsBtn"
+                                            class="btn btn-primary btn-block">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- set preffered form for group 1-->
+                        <div class="row" id="rankingGroup1">
+
+                        </div>
+                        <!-- set preffered form for group 2-->
+                        <div class="row" id="rankingGroup2">
+
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="Lib/JS/jquery-3.4.1.min.js"></script>
+    <script src="Lib/JS/popper.min.js"></script>
+    <script src="Lib/JS/bootstrap.min.js"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
