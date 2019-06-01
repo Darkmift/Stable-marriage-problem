@@ -1,3 +1,5 @@
+export { Person };
+
 function Person(name) {
   var candidateIndex = 0;
 
@@ -6,7 +8,7 @@ function Person(name) {
   this.candidates = [];
 
   this.rank = function(p) {
-    for (i = 0; i < this.candidates.length; i++)
+    for (let i = 0; i < this.candidates.length; i++)
       if (this.candidates[i] === p) return i;
     return this.candidates.length + 1;
   };
@@ -104,9 +106,9 @@ function doMarriage() {
   var guys = [abe, bob, col, dan, ed, fred, gav, hal, ian, jon];
   var gals = [abi, bea, cath, dee, eve, fay, gay, hope, ivy, jan];
 
-  engageEveryone(guys);
+  // engageEveryone(guys);
 
-  for (var i = 0; i < guys.length; i++) {
+  for (let i = 0; i < guys.length; i++) {
     console.log("%s is engaged to %s", guys[i].name, guys[i].fiance.name);
   }
   console.log("Stable = %s", isStable(guys, gals) ? "Yes" : "No");
@@ -114,4 +116,4 @@ function doMarriage() {
   console.log("Stable = %s", isStable(guys, gals) ? "Yes" : "No");
 }
 
-doMarriage();
+// doMarriage();

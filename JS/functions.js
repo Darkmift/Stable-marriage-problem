@@ -8,6 +8,10 @@ export {
   renderRankingContainer
 };
 
+import { Storage } from "./Storage.js";
+let Database = new Storage();
+Database.getLocalStorage();
+
 function validateInput(logic, errEl, msg) {
   if (logic) {
     showErr(errEl, msg);
@@ -90,6 +94,7 @@ function find_duplicate_in_array(arr) {
       result.push(prop);
     }
   }
+  console.log("TCL: functionfind_duplicate_in_array -> result", result);
   return result.length >= 1 ? true : false;
 }
 
@@ -125,7 +130,7 @@ function renderRankingForm(name, group) {
 
   formGroup.append(label);
   $.each(group, function(index, name) {
-    formGroup.append(renderSelect(group, name));
+    formGroup.append(renderSelect(group, index));
   });
   formGroup.append(renderSubmitBtn(name));
   formGroup.append($("<hr>"));
@@ -149,7 +154,28 @@ function renderSubmitBtn(name) {
 
 function btnCallback(e) {
   e.preventDefault();
-  console.log("hi: ", $(e.target).closest("form"));
+  let parentForm = $(e.target).closest("form");
+
+  let arr = parentForm.serialize().split("&");
+  arr = arr.map(subArr => subArr.split("=")[1]);
+
+  //validate selects all have diffrent values
+  if (find_duplicate_in_array(arr)) {
+    validateInput(
+      true,
+      $("#errDiv"),
+      "cannot-save: values for each select must be diffrent"
+    );
+    return;
+  }
+  let parentGroup = parentForm.parent().attr("id");
+  let PickerName = parentForm.attr("id");
+  Database.addPerson(PickerName, parentGroup, arr);
+  // let obj = { PickerName: arr };
+  // Storage[parentGroup][PickerName] = arr;
+  // console.log(`store ${JSON.stringify(obj)} under: ${parentGroup}`);
+  console.log(Database.data);
+  //
 }
 
 function renderRankingContainer(groups, container) {
@@ -162,7 +188,6 @@ function renderRankingContainer(groups, container) {
         e.preventDefault();
         btnCallback(e);
       });
-    console.log($(rankingForm).find("button"));
     container.append(rankingForm);
   });
   return container;

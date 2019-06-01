@@ -4,6 +4,11 @@ import {
   groupNames,
   renderRankingContainer
 } from "./functions.js";
+import { Person } from "./Person.js";
+import { Storage } from "./Storage.js";
+
+let Database = new Storage();
+Database.getLocalStorage();
 
 let subject = $("#subject"),
   instructions = $("#instructions"),
@@ -15,10 +20,6 @@ let subject = $("#subject"),
   submitGroupsBtn = $("#submitGroupsBtn"),
   rankingGroup1 = $("#rankingGroup1"),
   rankingGroup2 = $("#rankingGroup2");
-///
-// amountFormContainer.hide();
-// submitGroupsContainer.hide();
-///
 
 //reject e keypress
 pickAmountInput.keydown(e => (e.keyCode == 69 ? false : true));
@@ -64,8 +65,6 @@ submitGroupsBtn.click(e => {
     subject.text("Select counterparts"),
       instructions.text("Rank preffered mates for each candidate"),
       submitGroupsContainer.hide();
-
-    //build form for each group member and populate choices
 
     //group1 pick form
     renderRankingContainer([group1Names, group2Names], rankingGroup1);
