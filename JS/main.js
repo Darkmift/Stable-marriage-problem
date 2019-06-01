@@ -2,13 +2,27 @@ import {
   validateInput,
   renderInputGroupt,
   groupNames,
-  renderRankingContainer
+  renderRankingContainer,
+  calcAll
 } from "./functions.js";
+
 import { Person } from "./Person.js";
 import { Storage } from "./Storage.js";
 
-let Database = new Storage();
-Database.getLocalStorage();
+// // localStorage.removeItem("groupsData");
+// let FormData = new Storage();
+// FormData.initStorage();
+
+// //reset previous calculation
+// if (FormData.hasData()) {
+//   // FormData.reset();
+//   // $("#previousDataAlert").show();
+//   // $("#previousDataAlertBtn").click(e => {
+//   //   FormData.clearStorage();
+//   //   FormData.initStorage();
+//   //   $("#previousDataAlert").hide();
+//   // });
+// }
 
 let subject = $("#subject"),
   instructions = $("#instructions"),
@@ -38,7 +52,7 @@ pickAmountBtn.click(e => {
   ) {
     return;
   }
-
+  $("#previousDataAlert").hide();
   let group1 = $("#group1"),
     group2 = $("#group2");
 
@@ -73,5 +87,11 @@ submitGroupsBtn.click(e => {
     //group2 pick form
     renderRankingContainer([group2Names, group1Names], rankingGroup2);
     $(rankingGroup2).show();
+    $("#rankingCalc").show();
   }
+});
+
+$("#rankingCalcBtn").click(function(e) {
+  e.preventDefault();
+  calcAll();
 });

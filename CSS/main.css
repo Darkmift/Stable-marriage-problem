@@ -2,6 +2,12 @@
   max-width: 60vw;
 }
 
+#previousDataAlert:not(button) {
+  background-color: rgb(192, 197, 201);
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .alert {
   max-height: 2.8vw;
 }
@@ -30,7 +36,9 @@ select {
 .alert,
 #submitGroupsContainer,
 #rankingGroup1,
-#rankingGroup2 {
+#rankingGroup2,
+#rankingCalc,
+#previousDataAlert {
   display: none;
 }
 

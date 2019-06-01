@@ -5,12 +5,13 @@ export {
   renderRankingForm,
   renderSubmitBtn,
   btnCallback,
-  renderRankingContainer
+  renderRankingContainer,
+  calcAll
 };
 
 import { Storage } from "./Storage.js";
-let Database = new Storage();
-Database.getLocalStorage();
+let FormData = new Storage();
+FormData.reset();
 
 function validateInput(logic, errEl, msg) {
   if (logic) {
@@ -55,8 +56,6 @@ function groupNames(group, errEl, groupName) {
   let msg = "";
   let groupValues = [];
 
-  console.log(`TCL: groupNames -> groupName`, groupName);
-
   $.each($(group).find("input"), function(index, element) {
     if ($(element).val().length < 1) {
       flag = true;
@@ -94,7 +93,6 @@ function find_duplicate_in_array(arr) {
       result.push(prop);
     }
   }
-  console.log("TCL: functionfind_duplicate_in_array -> result", result);
   return result.length >= 1 ? true : false;
 }
 
@@ -153,7 +151,6 @@ function renderSubmitBtn(name) {
 }
 
 function btnCallback(e) {
-  e.preventDefault();
   let parentForm = $(e.target).closest("form");
 
   let arr = parentForm.serialize().split("&");
@@ -168,14 +165,12 @@ function btnCallback(e) {
     );
     return;
   }
+  $(e.target).removeClass("btn-primary");
+  $(e.target).addClass("btn-warning");
+  $(e.target).text("Edit again?");
   let parentGroup = parentForm.parent().attr("id");
   let PickerName = parentForm.attr("id");
-  Database.addPerson(PickerName, parentGroup, arr);
-  // let obj = { PickerName: arr };
-  // Storage[parentGroup][PickerName] = arr;
-  // console.log(`store ${JSON.stringify(obj)} under: ${parentGroup}`);
-  console.log(Database.data);
-  //
+  FormData.addPerson(PickerName, parentGroup, arr);
 }
 
 function renderRankingContainer(groups, container) {
@@ -191,4 +186,16 @@ function renderRankingContainer(groups, container) {
     container.append(rankingForm);
   });
   return container;
+}
+
+function calcAll() {
+  if (FormData.fetchData() == false) {
+    validateInput(
+      true,
+      $("#errDiv"),
+      "either previous data is conflicting or you've not updated for all candidates."
+    );
+    $("#previousDataAlert").show();
+    return;
+  }
 }
