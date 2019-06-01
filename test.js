@@ -36,3 +36,10 @@ for (let set in choices) {
     // }
   }
 }
+
+
+
+$('#group1_1').val('Nye')
+$('#group1_2').val('Bob')
+$('#group2_1').val('Jane')
+$('#group2_2').val('Lisa')

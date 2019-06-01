@@ -2,7 +2,7 @@ export { Person, doMarriage };
 
 function Person(name) {
   var candidateIndex = 0;
-
+  this.group = null;
   this.name = name;
   this.fiance = null;
   this.candidates = [];
@@ -61,13 +61,17 @@ function engageEveryone(guys) {
 }
 
 function doMarriage(groups) {
+  console.log("TCL: doMarriage -> groups", groups);
   let group1 = groups[0];
   let group2 = groups[1];
   engageEveryone(group1);
 
-  for (let i = 0; i < group1.length; i++) {
-    console.log("%s is engaged to %s", group1[i].name, group1[i].fiance.name);
+  for (let person in group1) {
+    console.log("TCL: doMarriage -> group1", group1);
+    console.log("TCL: doMarriage -> person", group1[person]);
+    console.log("%s is engaged to %s", person.name, person.fiance);
   }
+
   console.log("Stable = %s", isStable(group1, group2) ? "Yes" : "No");
   // jon.swapWith(fred);????
   console.log("Stable = %s", isStable(group1, group2) ? "Yes" : "No");

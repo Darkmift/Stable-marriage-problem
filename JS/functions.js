@@ -215,64 +215,31 @@ function calcAll() {
   }
 
   let groups = Object.values(FormData.fetchData());
-  const groupNames = Object.keys(groups);
-  console.log("TCL: calcAll -> groupNames", groupNames);
-  console.log("TCL: calcAll -> groups", groups);
+  let people = [];
+  let parties = [[], []];
 
-  let people = {};
-  for (let obj in groups) {
-    let group = groups[obj];
-    for (let person in group) {
-      people[person] = group[person];
-
-      // console.log("TCL: people", people);
+  for (let i = 0; i < groups.length; i++) {
+    for (let name in groups[i]) {
+      let choices = groups[i][name];
+      let nameOf = name;
+      name = new Person(name);
+      name.candidates = choices;
+      name.group = i;
+      people.push(name);
+      parties[i][nameOf] = name;
     }
   }
 
-  let candidates = [];
-  let choices = [];
-
-  for (let person in people) {
-    let bachelor = new Person(person);
-    candidates.push(bachelor);
-    choices.push(people[person]);
-  }
-
-  for (let i = 0; i < choices.length; i++) {
-    for (let j = 0; j < choices[i].length; j++) {
-      for (let l = 0; l < candidates.length; l++) {
-        if (candidates[l].name == choices[i][j]) {
-          choices[i][j] = candidates[l];
+  people.forEach(person => {
+    person.candidates = person.candidates.map(candidate => {
+      for (let i = 0; i < people.length; i++) {
+        if (people[i].name == candidate) {
+          candidate = people[i];
         }
       }
-    }
-  }
+      return candidate;
+    });
+  });
 
-  // console.log("TCL: calcAll -> candidates", candidates);
-  // console.log("TCL: calcAll -> choices", choices);
-
-  for (let index = 0; index < candidates.length; index++) {
-    candidates[index].candidates = choices[index];
-  }
-  // console.log("TCL: calcAll -> candidates", candidates);
-
-  // for (let group in groups) {
-  //   for (let person in group) {
-  //     for (let candidate in candidates) {
-  //       console.log(
-  //         "TCL: calcAll -> groups[group]",
-  //         groups[group][person]
-  //       );
-  //       console.log("TCL: calcAll -> groups[group]", groups[group]);
-  //       console.log("TCL: calcAll -> candidate.name", candidate.name);
-  //       console.log("TCL: calcAll -> candidate", candidate);
-
-  //       if (candidate.name == groups[group].name) {
-  //         groups[group][person] = candidate;
-  //       }
-  //     }
-  //   }
-  // }
-  console.log(groups);
-  doMarriage(groups);
+  doMarriage(parties);
 }
