@@ -2,6 +2,7 @@ export {
   validateInput,
   renderInputGroupt,
   groupNames,
+  uniqueNames,
   renderRankingForm,
   renderSubmitBtn,
   btnCallback,
@@ -10,6 +11,7 @@ export {
 };
 
 import { Storage } from "./Storage.js";
+import { Person } from "./Person.js";
 let FormData = new Storage();
 FormData.reset();
 
@@ -77,6 +79,19 @@ function groupNames(group, errEl, groupName) {
   }
 
   return groupValues;
+}
+
+function uniqueNames(group1, group2) {
+  let groupValues = [];
+
+  $.each($(group1).find("input"), function(index, element) {
+    groupValues.push($(element).val());
+  });
+  $.each($(group2).find("input"), function(index, element) {
+    groupValues.push($(element).val());
+  });
+  
+  return !find_duplicate_in_array(groupValues);
 }
 
 function find_duplicate_in_array(arr) {
@@ -198,4 +213,5 @@ function calcAll() {
     $("#previousDataAlert").show();
     return;
   }
+  console.log(FormData.fetchData());
 }

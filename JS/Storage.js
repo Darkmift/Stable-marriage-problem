@@ -70,19 +70,19 @@ export class Storage {
   }
 
   dataReady() {
-    console.log("TCL: Storage -> dataReady -> this.data", this.data);
+    // console.log("TCL: Storage -> dataReady -> this.data", this.data);
     let group1 = Object.keys(this.data.rankingGroup1),
       group2 = Object.keys(this.data.rankingGroup2);
-    console.log("TCL: Storage -> dataReady -> this.data", this.data);
-    console.log("TCL: Storage -> dataReady -> group1", group1);
-    console.log("TCL: Storage -> dataReady -> group2", group2);
+    // console.log("TCL: Storage -> dataReady -> this.data", this.data);
+    // console.log("TCL: Storage -> dataReady -> group1", group1);
+    // console.log("TCL: Storage -> dataReady -> group2", group2);
 
-    console.log(
-      group1.length == group2.length,
-      group1.length >= 2,
-      this.duplicates(group1) == false,
-      this.duplicates(group2) == false
-    );
+    // console.log(
+    //   group1.length == group2.length,
+    //   group1.length >= 2,
+    //   this.duplicates(group1) == false,
+    //   this.duplicates(group2) == false
+    // );
 
     if (
       group1.length == group2.length &&

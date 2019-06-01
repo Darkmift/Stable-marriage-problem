@@ -2,27 +2,10 @@ import {
   validateInput,
   renderInputGroupt,
   groupNames,
+  uniqueNames,
   renderRankingContainer,
   calcAll
 } from "./functions.js";
-
-import { Person } from "./Person.js";
-import { Storage } from "./Storage.js";
-
-// // localStorage.removeItem("groupsData");
-// let FormData = new Storage();
-// FormData.initStorage();
-
-// //reset previous calculation
-// if (FormData.hasData()) {
-//   // FormData.reset();
-//   // $("#previousDataAlert").show();
-//   // $("#previousDataAlertBtn").click(e => {
-//   //   FormData.clearStorage();
-//   //   FormData.initStorage();
-//   //   $("#previousDataAlert").hide();
-//   // });
-// }
 
 let subject = $("#subject"),
   instructions = $("#instructions"),
@@ -75,7 +58,13 @@ submitGroupsBtn.click(e => {
     group1Names = groupNames(group1, errDiv, "Group #1"),
     group2Names = groupNames(group2, errDiv, "Group #2");
 
+  console.log("TCL: uniqueNames(group1, group2)", uniqueNames(group1, group2));
+
   if (group1Names && group2Names) {
+    if (!uniqueNames(group1, group2)) {
+      validateInput(true, errDiv, "same name in both group is not allowed");
+      return;
+    }
     subject.text("Select counterparts"),
       instructions.text("Rank preffered mates for each candidate"),
       submitGroupsContainer.hide();
