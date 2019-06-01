@@ -11,7 +11,7 @@ export {
 };
 
 import { Storage } from "./Storage.js";
-import { Person } from "./Person.js";
+import { Person, doMarriage } from "./Person.js";
 let FormData = new Storage();
 FormData.reset();
 
@@ -90,7 +90,7 @@ function uniqueNames(group1, group2) {
   $.each($(group2).find("input"), function(index, element) {
     groupValues.push($(element).val());
   });
-  
+
   return !find_duplicate_in_array(groupValues);
 }
 
@@ -213,5 +213,66 @@ function calcAll() {
     $("#previousDataAlert").show();
     return;
   }
-  console.log(FormData.fetchData());
+
+  let groups = Object.values(FormData.fetchData());
+  const groupNames = Object.keys(groups);
+  console.log("TCL: calcAll -> groupNames", groupNames);
+  console.log("TCL: calcAll -> groups", groups);
+
+  let people = {};
+  for (let obj in groups) {
+    let group = groups[obj];
+    for (let person in group) {
+      people[person] = group[person];
+
+      // console.log("TCL: people", people);
+    }
+  }
+
+  let candidates = [];
+  let choices = [];
+
+  for (let person in people) {
+    let bachelor = new Person(person);
+    candidates.push(bachelor);
+    choices.push(people[person]);
+  }
+
+  for (let i = 0; i < choices.length; i++) {
+    for (let j = 0; j < choices[i].length; j++) {
+      for (let l = 0; l < candidates.length; l++) {
+        if (candidates[l].name == choices[i][j]) {
+          choices[i][j] = candidates[l];
+        }
+      }
+    }
+  }
+
+  // console.log("TCL: calcAll -> candidates", candidates);
+  // console.log("TCL: calcAll -> choices", choices);
+
+  for (let index = 0; index < candidates.length; index++) {
+    candidates[index].candidates = choices[index];
+  }
+  // console.log("TCL: calcAll -> candidates", candidates);
+
+  // for (let group in groups) {
+  //   for (let person in group) {
+  //     for (let candidate in candidates) {
+  //       console.log(
+  //         "TCL: calcAll -> groups[group]",
+  //         groups[group][person]
+  //       );
+  //       console.log("TCL: calcAll -> groups[group]", groups[group]);
+  //       console.log("TCL: calcAll -> candidate.name", candidate.name);
+  //       console.log("TCL: calcAll -> candidate", candidate);
+
+  //       if (candidate.name == groups[group].name) {
+  //         groups[group][person] = candidate;
+  //       }
+  //     }
+  //   }
+  // }
+  console.log(groups);
+  doMarriage(groups);
 }

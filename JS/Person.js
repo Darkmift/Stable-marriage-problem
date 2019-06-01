@@ -1,4 +1,4 @@
-export { Person };
+export { Person, doMarriage };
 
 function Person(name) {
   var candidateIndex = 0;
@@ -60,60 +60,15 @@ function engageEveryone(guys) {
   } while (!done);
 }
 
-function doMarriage() {
-  var abe = new Person("Abe");
-  var bob = new Person("Bob");
-  var col = new Person("Col");
-  var dan = new Person("Dan");
-  var ed = new Person("Ed");
-  var fred = new Person("Fred");
-  var gav = new Person("Gav");
-  var hal = new Person("Hal");
-  var ian = new Person("Ian");
-  var jon = new Person("Jon");
-  var abi = new Person("Abi");
-  var bea = new Person("Bea");
-  var cath = new Person("Cath");
-  var dee = new Person("Dee");
-  var eve = new Person("Eve");
-  var fay = new Person("Fay");
-  var gay = new Person("Gay");
-  var hope = new Person("Hope");
-  var ivy = new Person("Ivy");
-  var jan = new Person("Jan");
+function doMarriage(groups) {
+  let group1 = groups[0];
+  let group2 = groups[1];
+  engageEveryone(group1);
 
-  abe.candidates = [abi, eve, cath, ivy, jan, dee, fay, bea, hope, gay];
-  bob.candidates = [cath, hope, abi, dee, eve, fay, bea, jan, ivy, gay];
-  col.candidates = [hope, eve, abi, dee, bea, fay, ivy, gay, cath, jan];
-  dan.candidates = [ivy, fay, dee, gay, hope, eve, jan, bea, cath, abi];
-  ed.candidates = [jan, dee, bea, cath, fay, eve, abi, ivy, hope, gay];
-  fred.candidates = [bea, abi, dee, gay, eve, ivy, cath, jan, hope, fay];
-  gav.candidates = [gay, eve, ivy, bea, cath, abi, dee, hope, jan, fay];
-  hal.candidates = [abi, eve, hope, fay, ivy, cath, jan, bea, gay, dee];
-  ian.candidates = [hope, cath, dee, gay, bea, abi, fay, ivy, jan, eve];
-  jon.candidates = [abi, fay, jan, gay, eve, bea, dee, cath, ivy, hope];
-  abi.candidates = [bob, fred, jon, gav, ian, abe, dan, ed, col, hal];
-  bea.candidates = [bob, abe, col, fred, gav, dan, ian, ed, jon, hal];
-  cath.candidates = [fred, bob, ed, gav, hal, col, ian, abe, dan, jon];
-  dee.candidates = [fred, jon, col, abe, ian, hal, gav, dan, bob, ed];
-  eve.candidates = [jon, hal, fred, dan, abe, gav, col, ed, ian, bob];
-  fay.candidates = [bob, abe, ed, ian, jon, dan, fred, gav, col, hal];
-  gay.candidates = [jon, gav, hal, fred, bob, abe, col, ed, dan, ian];
-  hope.candidates = [gav, jon, bob, abe, ian, dan, hal, ed, col, fred];
-  ivy.candidates = [ian, col, hal, gav, fred, bob, abe, ed, jon, dan];
-  jan.candidates = [ed, hal, gav, abe, bob, jon, col, ian, fred, dan];
-
-  var guys = [abe, bob, col, dan, ed, fred, gav, hal, ian, jon];
-  var gals = [abi, bea, cath, dee, eve, fay, gay, hope, ivy, jan];
-
-  // engageEveryone(guys);
-
-  for (let i = 0; i < guys.length; i++) {
-    console.log("%s is engaged to %s", guys[i].name, guys[i].fiance.name);
+  for (let i = 0; i < group1.length; i++) {
+    console.log("%s is engaged to %s", group1[i].name, group1[i].fiance.name);
   }
-  console.log("Stable = %s", isStable(guys, gals) ? "Yes" : "No");
-  jon.swapWith(fred);
-  console.log("Stable = %s", isStable(guys, gals) ? "Yes" : "No");
+  console.log("Stable = %s", isStable(group1, group2) ? "Yes" : "No");
+  // jon.swapWith(fred);????
+  console.log("Stable = %s", isStable(group1, group2) ? "Yes" : "No");
 }
-
-// doMarriage();
