@@ -2,7 +2,7 @@ import {
   validateInput,
   renderInputGroupt,
   groupNames,
-  renderRankingForm
+  renderRankingContainer
 } from "./functions.js";
 
 let subject = $("#subject"),
@@ -61,18 +61,18 @@ submitGroupsBtn.click(e => {
     group2Names = groupNames(group2, errDiv, "Group #2");
 
   if (group1Names && group2Names) {
-    console.log("TCL: group1Names", group1Names);
-    console.log("TCL: group2Names", group2Names);
-
     subject.text("Select counterparts"),
       instructions.text("Rank preffered mates for each candidate"),
       submitGroupsContainer.hide();
 
     //build form for each group member and populate choices
-    $.each(group1Names, function(index, name) {
-      rankingGroup1.append(renderRankingForm(name, group2Names));
-    });
+
+    //group1 pick form
+    renderRankingContainer([group1Names, group2Names], rankingGroup1);
     $(rankingGroup1).show();
-    //render forms for each memeber and their choices
+
+    //group2 pick form
+    renderRankingContainer([group2Names, group1Names], rankingGroup2);
+    $(rankingGroup2).show();
   }
 });

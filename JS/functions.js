@@ -1,4 +1,12 @@
-export { validateInput, renderInputGroupt, groupNames, renderRankingForm };
+export {
+  validateInput,
+  renderInputGroupt,
+  groupNames,
+  renderRankingForm,
+  renderSubmitBtn,
+  btnCallback,
+  renderRankingContainer
+};
 
 function validateInput(logic, errEl, msg) {
   if (logic) {
@@ -119,7 +127,43 @@ function renderRankingForm(name, group) {
   $.each(group, function(index, name) {
     formGroup.append(renderSelect(group, name));
   });
+  formGroup.append(renderSubmitBtn(name));
   formGroup.append($("<hr>"));
   form.append(formGroup);
   return form;
+}
+
+function renderSubmitBtn(name) {
+  let container = $("<div></div>", {
+    class: "row col-sm-12"
+  });
+  let button = $("<button></button>", {
+    type: "submit",
+    class: "btn btn-primary btn-block",
+    id: `${name}_rankings`,
+    text: `Update ${name} rankings`
+  });
+  container.append(button);
+  return container;
+}
+
+function btnCallback(e) {
+  e.preventDefault();
+  console.log("hi: ", $(e.target).closest("form"));
+}
+
+function renderRankingContainer(groups, container) {
+  //build form for each group member and populate choices
+  $.each(groups[0], function(index, name) {
+    let rankingForm = renderRankingForm(name, groups[1]);
+    $(rankingForm)
+      .find("button")
+      .click(e => {
+        e.preventDefault();
+        btnCallback(e);
+      });
+    console.log($(rankingForm).find("button"));
+    container.append(rankingForm);
+  });
+  return container;
 }
