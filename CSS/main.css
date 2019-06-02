@@ -1,36 +1,47 @@
+html,
+body {
+    height: 100%;
+}
+
+.container,
+.row.justify-content-center.align-items-center {
+    height: 100%;
+    min-height: 100%;
+}
+
 #wrapper {
-  max-width: 60vw;
+    max-width: 60vw;
 }
 
 #previousDataAlert:not(button) {
-  background-color: rgb(192, 197, 201);
-  border-radius: 5px;
-  padding: 5px;
+    background-color: rgb(192, 197, 201);
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .alert {
-  max-height: 2.8vw;
+    max-height: 2.8vw;
 }
 
 .row {
-  margin: 15px 0;
+    margin: 15px 0;
 }
 
 .form-inline label {
-  margin-bottom: 0;
-  margin: 0 10px;
+    margin-bottom: 0;
+    margin: 0 10px;
 }
 
 .form-group {
-  margin: 0 5px;
+    margin: 0 5px;
 }
 
 select {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 #pickAmountBtn {
-  margin: 0 10px;
+    margin: 0 10px;
 }
 
 .alert,
@@ -39,12 +50,13 @@ select {
 #rankingGroup2,
 #rankingCalc,
 #previousDataAlert {
-  display: none;
+    display: none;
 }
 
 #submitGroupsBtn {
-  margin: 5px;
+    margin: 5px;
 }
+
 
 /* #rankingGroup1 {
   border-right: 1px solid grey;

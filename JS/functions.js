@@ -11,7 +11,8 @@ export {
 };
 
 import { Storage } from "./Storage.js";
-import { Person, doMarriage } from "./Person.js";
+import { Person } from "./Person.js";
+import { doMarriage } from "./marriageFunctions.js";
 let FormData = new Storage();
 FormData.reset();
 
@@ -216,7 +217,6 @@ function calcAll() {
 
   let groups = Object.values(FormData.fetchData());
   let people = [];
-  let parties = [[], []];
 
   for (let i = 0; i < groups.length; i++) {
     for (let name in groups[i]) {
@@ -226,20 +226,33 @@ function calcAll() {
       name.candidates = choices;
       name.group = i;
       people.push(name);
-      parties[i][nameOf] = name;
     }
   }
 
-  people.forEach(person => {
-    person.candidates = person.candidates.map(candidate => {
+  people = people.map(person => {
+    let candidates = person.candidates;
+    person.candidates = [];
+    candidates.forEach(candidate => {
       for (let i = 0; i < people.length; i++) {
         if (people[i].name == candidate) {
-          candidate = people[i];
+          person.candidates.push(people[i]);
         }
       }
-      return candidate;
+      return person.candidate;
     });
+    return person;
   });
 
+  let a = [];
+  let b = [];
+
+  people.forEach(person => {
+    person.group == 1 ? a.push(person) : b.push(person);
+  });
+
+  let parties = [a, b];
+
+  console.log("TCL: calcAll -> people", people);
+  console.log("TCL: calcAll -> parties", parties);
   doMarriage(parties);
 }
