@@ -370,11 +370,7 @@ pickAmountInput.keydown(e => (e.keyCode == 69 ? false : true));
  * --accept only value higher than 1
  */
 pickAmountBtn.click(e => {
-  /***
-   * dev stuff
-   */
-  pickAmountInput.val(2);
-  /*** */
+
   e.preventDefault();
   //validate input is a number and large enough
   if (
@@ -410,13 +406,6 @@ pickAmountBtn.click(e => {
 
 submitGroupsBtn.click(e => {
   e.preventDefault();
-
-  ///--remove !! dev stuff
-  $("#group1_1").val("1A");
-  $("#group1_2").val("1B");
-  $("#group2_1").val("2A");
-  $("#group2_2").val("2B");
-  ///
 
   let group1 = $("#group1"),
     group2 = $("#group2"),
