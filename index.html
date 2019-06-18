@@ -3,7 +3,7 @@
 
 <head>
     <link rel="shortcut icon" href="./Lib/IMAGES/ringIco.ico" type="image/x-icon">
-    <title>Picker</title>
+    <title>Picker2</title>
     <link rel="stylesheet" href="./Lib/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="./CSS/main.css">
@@ -14,85 +14,90 @@
     <div class="container h-100" id="wrapper">
         <div class="row  h-100 justify-content-center align-items-center">
             <div class="row jumbotron">
-                <section>
-                    <div style="height: 3vw;">
-                        <div class="alert alert-danger" id="errDiv"></div>
-                    </div>
-                    <div class="container">
-                        <!-- instructions row -->
-                        <div class="row" id="previousDataAlert">
-                            <div class="row col-sm-12">
-                                <p class="col-sm-12">DataBase has previous data!</p>
-                                <button id="previousDataAlertBtn" class="col-sm-12 btn btn-warning">Reset?</button>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 id="subject">Select amount</h4>
-                                <p id="instructions">Both group must have similar amount items to work:</p>
-                                <hr>
-                            </div>
-                        </div>
-                        <!-- amount form -->
-                        <div class="row" id="amountFormContainer">
-                            <div class="col-sm-12">
-                                <form class="form-inline">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label for="pickAmountInput">Amount:</label>
-                                            <input type="number" class="form-control" id="pickAmountInput">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div>
-                                            <button type="submit" id="pickAmountBtn"
-                                                class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- names in groups form -->
-                        <div class="row" id="submitGroupsContainer">
-                            <div class="col-sm-12">
-                                <form class="row col-sm-12">
-                                    <div class="row col-sm-12" id="group1">
-                                        <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
-                                            <h5>Group 1:</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row col-sm-12" id="group2">
-                                        <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
-                                            <h5>Group 2:</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row col-sm-12">
-                                        <button type="submit" id="submitGroupsBtn"
-                                            class="btn btn-primary btn-block">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- set preffered form for group 1-->
-                            <div class="row col-sm-12 col-m-6 col-l-6 col-xl-6" id="rankingGroup1">
-                                <h4>Group 1 members:</h4>
-                            </div>
-
-                            <!-- set preffered form for group 2-->
-                            <div class="row col-sm-12 col-m-6 col-l-6 col-xl-6" id="rankingGroup2">
-                                <h4>Group 2 members:</h4>
-                            </div>
-                            <div class="row col-sm-12" id="rankingCalc">
-                                <p class="col-sm-10 offset-1">Submit once all candidates made unique choices</p>
-                                <button id="rankingCalcBtn"
-                                    class="col-sm-12 btn btn-success btn-block">Calculate</button>
-                            </div>
+                <!-- <section> -->
+                <div style="height: 3vw;">
+                    <div class="alert alert-danger" id="errDiv"></div>
+                </div>
+                <div class="container">
+                    <!-- instructions row -->
+                    <div class="row" id="previousDataAlert">
+                        <div class="row col-sm-12">
+                            <p class="col-sm-12">DataBase has previous data!</p>
+                            <button id="previousDataAlertBtn" class="col-sm-12 btn btn-warning">Reset?</button>
+                            <hr>
                         </div>
                     </div>
-                </section>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 id="subject">Select amount</h4>
+                            <p id="instructions">Both group must have similar amount items to work:</p>
+                            <hr>
+                        </div>
+                    </div>
+                    <!-- amount form -->
+                    <div class="row" id="amountFormContainer">
+                        <div class="col-sm-12">
+                            <form class="form-inline">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="pickAmountInput">Amount:</label>
+                                        <input type="number" class="form-control" id="pickAmountInput">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <button type="submit" id="pickAmountBtn" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- names in groups form -->
+                    <div class="row" id="submitGroupsContainer">
+                        <div class="col-sm-12">
+                            <form class="row col-sm-12">
+                                <div class="row col-sm-12" id="group1">
+                                    <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
+                                        <h5>Group 1:</h5>
+                                    </div>
+                                </div>
+                                <div class="row col-sm-12" id="group2">
+                                    <div class="col-s-12 col-m-12 col-l-12 col-xl-12">
+                                        <h5>Group 2:</h5>
+                                    </div>
+                                </div>
+                                <div class="row col-sm-12">
+                                    <button type="submit" id="submitGroupsBtn"
+                                        class="btn btn-primary btn-block">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- set candidates for each person -->
+                    <div class="row" id="setCandidatesContainer">
+                        <!-- set preffered form for group 1-->
+                        <div class="row col-sm-12 col-m-6 col-l-6 col-xl-6" id="rankingGroup1">
+                            <h4>Group 1 members:</h4>
+                        </div>
+
+                        <!-- set preffered form for group 2-->
+                        <div class="row col-sm-12 col-m-6 col-l-6 col-xl-6" id="rankingGroup2">
+                            <h4>Group 2 members:</h4>
+                        </div>
+                        <div class="row col-sm-12" id="rankingCalc">
+                            <p class="col-sm-10 offset-1">Submit once all candidates made unique choices</p>
+                            <button id="rankingCalcBtn" class="col-sm-12 btn btn-success btn-block">Calculate</button>
+                        </div>
+                    </div>
+
+                    <!-- show who's married to who -->
+                    <div class="row" id="showCouplesContainer">
+                        <div class="row" id="showCouplesOutput">
+                        </div>
+                    </div>
+                </div>
+                <!-- </section> -->
             </div>
         </div>
     </div>

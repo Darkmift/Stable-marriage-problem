@@ -49,12 +49,22 @@ select {
 #rankingGroup1,
 #rankingGroup2,
 #rankingCalc,
-#previousDataAlert {
+#previousDataAlert,
+#showCouplesContainer {
     display: none;
 }
 
 #submitGroupsBtn {
     margin: 5px;
+}
+
+.coupleSpan {
+    background-color: white;
+    font-size: bold;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
 }
 
 
